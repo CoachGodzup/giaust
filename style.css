@@ -1,0 +1,90 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Courier New', monospace;
+  overflow: hidden;
+}
+
+#game-container {
+  position: relative;
+  width: 800px;
+  height: 600px;
+}
+
+#game-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+#ui-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 18px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.screen-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  z-index: 20;
+}
+
+.screen-overlay.hidden {
+  display: none;
+}
+
+.screen-overlay h1 {
+  font-size: 64px;
+  margin-bottom: 20px;
+  text-shadow: 4px 4px 0 #ff6600;
+}
+
+.screen-overlay p {
+  font-size: 24px;
+  margin: 5px 0;
+  animation: blink 1s infinite;
+}
+
+.controls-info {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.controls-info p {
+  font-size: 16px;
+  animation: none;
+  margin: 3px 0;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
