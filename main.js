@@ -289,10 +289,16 @@ class Game {
 
   checkPlatformCollision(entity) {
     const result = CollisionSystem.checkEntityVsPlatforms(entity, this.platforms)
-    if (result && result.collision === 'top') {
-      entity.position.y = result.platform.y - entity.bounds.height
-      entity.velocity.vy = 0
-      entity.onPlatform = true
+    if (result) {
+      if (result.collision === 'top') {
+        entity.position.y = result.platform.y - entity.bounds.height
+        entity.velocity.vy = 0
+        entity.onPlatform = true
+      } else if (result.collision === 'bottom') {
+        entity.position.y = result.platform.bottom
+        entity.velocity.vy = 0
+        entity.onPlatform = false
+      }
     } else {
       entity.onPlatform = false
     }

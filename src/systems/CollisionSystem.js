@@ -32,11 +32,27 @@ export class CollisionSystem {
     }
   }
 
+  static _overlapsPlatformSolid(entity, platform) {
+    if (!platform.hasGap) return true
+
+    const entityLeft = entity.left
+    const entityRight = entity.right
+
+    const gapLeft = platform.gapStart
+    const gapRight = platform.gapEnd
+
+    if (entityRight <= gapLeft || entityLeft >= gapRight) return true
+    return false
+  }
+
   static checkEntityVsPlatforms(entity, platforms) {
     for (const platform of platforms) {
-      if (this.checkAABB(entity, platform)) {
+      if (this.checkAABB(entity, platform) && this._overlapsPlatformSolid(entity, platform)) {
         if (entity.velocity.vy > 0 && entity.bottom - entity.velocity.vy * 0.016 <= platform.top + 5) {
           return { platform, collision: 'top' }
+        }
+        if (entity.velocity.vy < 0 && entity.top - entity.velocity.vy * 0.016 >= platform.bottom - 5) {
+          return { platform, collision: 'bottom' }
         }
       }
     }

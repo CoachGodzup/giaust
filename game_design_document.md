@@ -14,6 +14,7 @@ A browser-based recreation of the classic arcade game **Joust** (Williams Electr
 - Horizontal movement via left/right input
 - Momentum-based: mount carries inertia, doesn't stop instantly
 - Mount has a maximum fall speed (terminal velocity)
+- **Platform collision**: Platforms are rigid bodies — entities can land on top and rest, but cannot pass through from bottom to top (one-way solid)
 
 ### 2.2 Collision Combat
 - When two riders collide, compare their vertical positions
@@ -57,7 +58,9 @@ A browser-based recreation of the classic arcade game **Joust** (Williams Electr
 - Much faster than regular enemies
 
 ### 3.4 Platforms
-- Static platforms at various heights
+- Static rigid bodies at various heights
+- **One-way solid**: entities can land on top and rest, but cannot pass through from bottom to top
+- Players and enemies must fly around platform edges to reach higher levels
 - Some platforms have gaps the player can fall through
 - Eggs land on platforms
 - Players can land and take off from platforms

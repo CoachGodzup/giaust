@@ -9,6 +9,22 @@ export class Platform {
     this.gapEnd = hasGap ? x + width * 0.6 : 0
   }
 
+  get left() {
+    return this.x
+  }
+
+  get right() {
+    return this.x + this.width
+  }
+
+  get top() {
+    return this.y
+  }
+
+  get bottom() {
+    return this.y + this.height
+  }
+
   render(ctx) {
     ctx.save()
 
@@ -28,6 +44,11 @@ export class Platform {
 
     ctx.restore()
   }
+
+  get left() { return this.x }
+  get right() { return this.x + this.width }
+  get top() { return this.y }
+  get bottom() { return this.y + this.height }
 
   containsPoint(px, py) {
     if (this.hasGap && px > this.gapStart && px < this.gapEnd) {
